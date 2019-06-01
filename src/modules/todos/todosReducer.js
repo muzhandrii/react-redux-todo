@@ -48,9 +48,15 @@ export default handleActions(
       ...state,
       isError: true,
     }),
-    [actions.completeTodo.start]: (state) => ({
+    [actions.completeTodo.start]: (state, action) => ({
       ...state,
       isError: false,
+      todos: state.todos.map((todo) => {
+        if (todo.id === action.payload) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      }),
     }),
     [actions.completeTodo.success]: (state, action) => ({
       ...state,

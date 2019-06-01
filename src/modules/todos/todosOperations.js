@@ -46,7 +46,7 @@ export function removeTodo(id) {
 export function completeTodo(id, body) {
   return async function removeTodoThunk(dispatch) {
     try {
-      dispatch(actions.completeTodo.start());
+      dispatch(actions.completeTodo.start(id));
       const result = await Api.update(id, body);
       dispatch(actions.completeTodo.success(result));
     } catch (err) {
