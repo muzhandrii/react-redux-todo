@@ -32,7 +32,7 @@ export function loadAllTodo() {
 export function removeTodo(id) {
   return async function removeTodoThunk(dispatch) {
     try {
-      dispatch(actions.removeTodo.start());
+      dispatch(actions.removeTodo.start(id));
 
       await Api.remove(id);
 
